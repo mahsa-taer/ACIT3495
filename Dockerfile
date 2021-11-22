@@ -1,7 +1,5 @@
 FROM centos:latest
-RUN yum install httpd -y
-RUN yum install php -y
-CMD /usr/sbin/httpd -DFOREGROUND
-RUN yum install net-tools -y
-EXPOSE 80
+RUN yum install httpd -y && yum install php -y && yum install net-tools -y
 COPY index.html /var/www/html
+EXPOSE 80
+CMD /usr/sbin/httpd -DFOREGROUND
