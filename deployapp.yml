@@ -12,7 +12,7 @@ spec:
       name: web-deployment-pod
       labels:
         env: production
-      spec:
-        containers:
+    spec:
+      containers:
         - name: web-deployment-container
-          image: maryamtaer/myapp:latest
+        image: maryamtaer/myapp:latest
