@@ -14,5 +14,5 @@ spec:
         env: production
     spec:
       containers:
-        - name: web-deployment-container
+      - name: web-deployment-container
         image: maryamtaer/myapp:latest
