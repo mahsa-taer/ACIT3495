@@ -1,18 +1,29 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-    name: web-deployment
+  name: web-deployment
+  labels:
+    app: webapp
 spec:
-  replicas: 3
   selector:
     matchLabels:
-        env: production
+      app: webapp
+  replicas: 3
+  minReadySeconds: 10
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
   template:
     metadata:
-      name: web-deployment-pod
       labels:
-        env: production
-    spec:
+        app: webapp
+    spec: 
+      terminationGracePeriodSeconds: 1
       containers:
-      - name: web-deployment-container
+      - name: webapp-container
         image: maryamtaer/myapp:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080 
