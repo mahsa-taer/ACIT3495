@@ -1,0 +1,31 @@
+version: '3'
+services:
+  jenkins:
+    user: root
+    build: /home/maryam/acit3495/jenkins
+    container_name: jenkins_master
+    networks:
+      - jenkins
+
+    environment:
+      - JENKINS_HOME=/var/lib/jenkins
+      - JAVA_OPTS=-Xmx8192m
+
+    ports:
+      - '8082:8080'
+      - '50000:50000'
+    
+    volumes:
+      - 'jenkins_data:/var/jenkins_home'
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /usr/bin/docker:/usr/bin/docker
+    
+    logging:
+      driver: "journald"
+
+networks:
+  jenkins:
+
+volumes:
+  jenkins_data:
+    driver: local

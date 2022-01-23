@@ -19,11 +19,11 @@ spec:
     metadata:
       labels:
         app: webapp
-    spec: 
+    spec:
       terminationGracePeriodSeconds: 1
       containers:
       - name: webapp-container
         image: maryamtaer/myapp:latest
         imagePullPolicy: Always
         ports:
-        - containerPort: 8080 
+        - containerPort: 8080
